@@ -1,0 +1,22 @@
+<h1>Nuestros productos</h1>
+<img src="/img/agencia.jpg" alt="Banner de productos">
+
+<section class="productos">
+  @for (producto of productos; track producto.id) {
+    <article class="producto">
+      <img [src]="producto.imagen" [alt]="producto.nombre">
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.descripcion }}</p>
+      <strong>${{ producto.precio }}</strong>
+      <br>
+
+      <button (click)="toggleMostrarMas(producto)">
+        {{ producto.mostrarMas ? 'Ver menos' : 'Ver más' }}
+      </button>
+
+      <div *ngIf="producto.mostrarMas">
+        <p>{{ producto.detalles }}</p>
+      </div>
+    </article>
+  }
+</section>
